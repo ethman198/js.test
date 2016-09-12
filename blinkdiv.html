@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<!--20160910 - ethman198- blink of a div -->    
+<head>
+    <script type="text/javascript" defer>
+        function Blink()
+        {
+          if(document.getElementById("test").style.visibility == "visible"){
+              document.getElementById("test").style.visibility = "hidden";
+            }else{
+              document.getElementById("test").style.visibility = "visible";
+            }
+        }
+        setInterval(Blink, 1000);
+    </script>
+    </head>
+    <body >
+        <div id="container">
+        <div id="test" style="color:white;
+                              font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+                              text-align:center;
+                              border-radius: 25px;
+                              background: black;
+                              padding: 20px; 
+                              ">
+            20160910 - ethman198- blink of a div
+         </div>
+        </div>    
+       
+    </body>    
+</html>
