@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <!DOCTYPE html>
+    <script>
+        var pagetime = 1000;
+        var count = 1;    
+        var interval; 
+        var page = "page_selector.1.html";
+        var title = "1";
+        function parseGetVars()
+        {
+        var args = new Array();
+        var query = window.location.search.substring(1);
+        if (query)
+        {
+        var strList = query.split('&');
+        for(str in strList)
+        {
+        var parts = strList[str].split('=');
+        args[unescape(parts[0])] = unescape(parts[1]);
+                }
+            }
+        return args;
+        }
+
+        
+        function reloadIFrame() {
+            var get = parseGetVars();
+            if(get['page'] != null){
+              count =  parseInt(get['page']);
+            }
+            
+            switch(count)
+            {
+		    case 1:
+		        page = "page_selector.1.html";
+                pagetime = 1000; 
+                title = "1";    
+                break;	
+            case 2:
+		        page = "page_selector.2.html"; 
+                pagetime = 2000;
+                title = "2";    
+                break;		
+            case 3:
+		        page = "page_selector.3.html";
+                pagetime = 3000;
+                title = "3";    
+                break;		  
+            }
+            document.getElementById("tv").src = page;
+            document.body.setAttribute("height", window.innerHeight);
+            document.body.setAttribute("width", window.innerWidth);
+            document.body.setAttribute("align", "center");
+            document.getElementById("titlediv").innerHTML = "<font style='color:gray;'>title:</font> " + title + "<font style='color:gray;'> - page:</font> " + page + "<font style='color:gray;'> - timeout: </font>" + pagetime + " msec ";
+            document.getElementById("titlediv").innerHTML = "<font style='color:gray;'>title:</font> " + title + "<font style='color:gray;'> - page:</font> " + page + "<font style='color:gray;'> - timeout: </font>" + pagetime + " msec ";
+            clearInterval(interval);
+            console.log(page + ' -> ' + pagetime);
+            interval = window.setInterval("reloadIFrame();", pagetime);
+            if (count >= 3) {
+                count = 1;
+            }
+            else {
+                count++;
+            } 
+        } 
+</script>
+    </head>
+    <body scrolling="no" style=" overflow:hidden;" onload="reloadIFrame()">
+        <div id="titlediv" style="aling:center;text-align:center;font-size:1.0rem;font-weight: bold;font-family:'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;"></div>
+        <div id="tvcontainer">
+        <iframe id="tv" width="99%" frameborder="0" scrolling="no" height="99%" frameborder="no" src="page_selector.1.html">
+        </iframe>
+        </div>
+    </body>
+</html>
