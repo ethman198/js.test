@@ -54,8 +54,6 @@
             document.body.setAttribute("width", window.innerWidth);
             document.body.setAttribute("align", "center");
             document.getElementById("titlediv").innerHTML = "<font style='color:gray;'>title:</font> " + title + "<font style='color:gray;'> - page:</font> " + page + "<font style='color:gray;'> - timeout: </font>" + pagetime + " msec ";
-            document.getElementById("titlediv").innerHTML = "<font style='color:gray;'>title:</font> " + title + "<font style='color:gray;'> - page:</font> " + page + "<font style='color:gray;'> - timeout: </font>" + pagetime + " msec ";
-            clearInterval(interval);
             console.log(page + ' -> ' + pagetime);
             interval = window.setInterval("reloadIFrame();", pagetime);
             if (count >= 3) {
